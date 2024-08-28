@@ -7,6 +7,23 @@ namespace VariableSpanCollectionView.Maui
 {
 	public partial class VariableSpanCollectionViewHandler : ReorderableItemsViewHandler<VariableSpanCollectionView>
 	{
+
+		public VariableSpanCollectionViewHandler() : base()
+		{
+			ReorderableItemsViewMapper.ModifyMapping(SelectableItemsView.SelectionModeProperty.PropertyName, MapSelectionMode);
+		}
+
+		private void MapSelectionMode(ReorderableItemsViewHandler<VariableSpanCollectionView> handler, ReorderableItemsView view, Action<IElementHandler, IElement> action)
+		{
+			var ctrl = (handler.ViewController as SelectableItemsViewController<ReorderableItemsView>);
+			if (ctrl == null)
+			{
+				return;
+			}
+			ctrl.CollectionView.AllowsSelection = true;
+			ctrl.CollectionView.AllowsMultipleSelection = false;
+		}
+
 		protected override ItemsViewController<VariableSpanCollectionView> CreateController(VariableSpanCollectionView itemsView, ItemsViewLayout layout)
 			=> new VariableSpanCollectionViewController<VariableSpanCollectionView>(itemsView, layout);
 
