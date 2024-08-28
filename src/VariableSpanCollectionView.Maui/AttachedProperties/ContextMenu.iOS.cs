@@ -1,5 +1,10 @@
-﻿using CoreGraphics;
+﻿using System;
+using System.IO;
+using CoreGraphics;
 using Foundation;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Graphics.Platform;
 using Microsoft.Maui.Platform;
 using UIKit;
